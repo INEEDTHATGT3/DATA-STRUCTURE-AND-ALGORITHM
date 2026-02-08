@@ -1,0 +1,16 @@
+{
+    "C_Cpp.errorSquiggles": "enabled",
+    "files.associations": {
+        "iostream": "cpp",
+        "char_array,cpp": "cpp",
+        "typeindex": "cpp",
+        "typeinfo": "cpp",
+        "vector": "cpp",
+        "MACROS.C": "cpp",
+        "string": "cpp",
+        "cmath": "cpp",
+        "algorithm": "cpp",
+        "climits": "cpp",
+        "set": "cpp"
+    }
+}

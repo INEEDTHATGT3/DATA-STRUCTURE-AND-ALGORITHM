@@ -1,0 +1,143 @@
+#include<iostream>
+#include <cstring>
+using namespace std;
+
+int getlength(char name[]){
+    int length = 0;
+    int i = 0;
+     
+    while(name[i] != '\0'){
+        length++;
+        i++;
+    }
+    return length;
+}
+
+void revCharArray(char name[]){
+    int i = 0;
+    int n = getlength(name);
+    int j = n-1;
+    while(i <= j){
+        char temp = name[i];
+        name[i] = name[j];
+        name[j] = temp;
+        i++;
+        j--;
+    }
+}
+
+void replaceSpaces(char sentence[]){
+    int i = 0;
+    int n = strlen(sentence);
+    while(i< n){
+        if(sentence[i] == ' '){
+            sentence[i] = '@';
+        }
+        i++;
+    }
+}
+
+bool checkPalindrome(char name[]){
+    int n = getlength(name);
+    int i = 0;
+    int j = n-1;
+    while(i <= j){
+        if(name[i] != name[j]){
+            return false;
+        }
+        else{
+            i++;
+            j--;
+        }
+    }
+    return true;
+}
+
+void upperCase(char name[]){
+    int i = 0;
+    int n = getlength(name);
+
+    for(int i=0; i<n; i++){
+        if(name[i] >= 'A' && name[i] <= 'Z'){
+            continue; // Already uppercase
+        }
+        name[i] = name[i] -'a' + 'A'; // or -32  
+    }
+}
+
+bool compareStrings( string a, string b){
+    if(a.length() != b.length())
+    return false;
+
+    int j =0;
+    for(int i=0; i<a.length(); i++){
+        if(a[i] != b[i]){
+            return false;
+        }
+        j++;
+    }
+    return true;
+}
+
+int main() {
+    char name[100];
+    cin >> name; // Corrected from 'cin << name;' to 'cin >> name;'
+
+    cout << "length of name is " << getlength(name) << endl;
+    cout << "length is -> " << strlen(name) << endl;
+
+    cout << "before reversing: " << name << endl;
+    revCharArray(name);
+    cout << "after reversing: " << name << endl;
+
+    if(checkPalindrome(name)){
+        cout << "name is palindrome" << endl;
+    }
+    else{
+        cout << "name is not palindrome" << endl;
+    }
+
+    upperCase(name);
+    cout << "after uppercasing: "<< name << endl;
+
+    for(int i =0; i<7; i++){
+        cout << "index: " << i << " value: " << name[i] << endl;
+    }
+
+    int value = (int)name[0];
+    cout << "value is: " << value << endl;
+
+    // cin only reads upto first whitespace,tab, or newline
+    cin.ignore(); // To ignore the newline character left in the input buffer
+    cin.getline(name, 100); // To read a full line including spaces
+
+    char sentence[100];
+    cout << "Enter a sentence: ";
+    cin.getline(sentence, 100);
+    cout << "before replacing spaces: " << sentence << endl;
+    replaceSpaces(sentence);
+    cout << "after replacing spaces: " << sentence << endl;
+
+    string str;
+    cout << "enter a string: ";
+    getline(cin, str);
+    cout << str << endl;
+
+    cout << "length of stringis: " << str.length() << endl;
+    cout << "isempty:  " << str.empty() << endl;
+
+    str.push_back('a');
+    cout << str << endl;
+    str.pop_back();
+    cout << str << endl;
+    cout << str.substr(0 , 5) << endl; // get index 0 to 4
+
+    string a = "hello";
+    string b = "world";
+    if(a.compare(b) == 0){
+        cout << "both are equal" << endl;
+    }
+    else{
+        cout << "not equal" << endl;
+    }
+}
